@@ -1,17 +1,14 @@
 name: update-syscalls
-on:
-  schedule:
-    - cron: '0 0 * * *'
+on: [push, pull_request]
 jobs:
   build:
-    if: github.repository == 'DMOJ/judge-server'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.7
+    - name: Set up Python 3.11
       uses: actions/setup-python@v4
       with:
-        python-version: '3.7'
+        python-version: '3.11'
     - name: Update syscalls
       run: |
         cd dmoj/cptbox/syscalls
